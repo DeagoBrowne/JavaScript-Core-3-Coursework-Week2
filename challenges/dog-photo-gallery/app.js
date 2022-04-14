@@ -8,6 +8,13 @@ function dogPhotoGenerator() {
         })
         .then(data => {
             console.log(data);
+
+            let image = document.createElement('img');
+            image.src = data.message;
+            let li = document.createElement('li');
+            li.appendChild(image);
+            photo.appendChild(li);
+            
         })
         .catch(err => console.log(err));
     
@@ -15,13 +22,7 @@ function dogPhotoGenerator() {
     const button = document.querySelector('.button');
 
 
-    button.addEventListener('click', () => {
-        let image = document.createElement('img');
-        image.src = 'https://dog.ceo/api/breeds/image/random';
-        let li = document.createElement('li');
-        li.appendChild(image);
-        photo.appendChild(li);
-        })
+    button.addEventListener('click', dogPhotoGenerator)
 }
 
 document.onload = dogPhotoGenerator();
